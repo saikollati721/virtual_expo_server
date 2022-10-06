@@ -8,7 +8,7 @@ import java.util.Map;
 
 @RequiredArgsConstructor
 public enum PlanMode {
-    MONTHLY(0, "MONTHLY"), YEARLY(1, "YEARLY");
+    NONE(0, "NONE"),MONTHLY(1, "MONTHLY"), YEARLY(2, "YEARLY");
 
     private static final Map<Integer, PlanMode> map = new HashMap<>();
 
