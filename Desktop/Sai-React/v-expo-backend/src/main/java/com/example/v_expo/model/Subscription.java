@@ -34,7 +34,6 @@ public class Subscription {
     private String paymentMode;
 
     @Column(name = "next_billing_date")
-    @CreationTimestamp
     private Timestamp nextBillingDate;
 
     @Column(name = "created_date")

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestController(value = "orderController")
+@RestController(value = "tenantController")
 @RequestMapping
 @Log4j2
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -29,7 +29,7 @@ public class TenantController {
     private final TenantService tenantService;
     private final TenantMapper tenantMapper;
 
-    @RequestMapping(method = RequestMethod.GET, path = "/api/v1/tenant")
+    @RequestMapping(method = RequestMethod.GET, path = "/tenant")
     public Page<TenantDTO> index(TenantSpecificationBuilder builder, @PageableDefault(value = 25, page = 0) Pageable pageable) {
         log.debug("GET /tenants");
         Specification<Tenant> spec = builder.build();
@@ -38,13 +38,13 @@ public class TenantController {
         return new PageImpl<>(testCaseDTOS, pageable, tenants.getTotalElements());
     }
 
-    @PostMapping("/api/v1/tenant")
+    @PostMapping("/tenant")
     @ResponseBody
     public ResponseEntity<TenantDTO> createOrder(@RequestBody TenantRequest tenantRequest) throws Exception {
         return ResponseEntity.status(HttpStatus.OK).body(tenantService.create(tenantRequest));
     }
 
-    @GetMapping("/api/v1/tenant{id}")
+    @GetMapping("/tenant{id}")
     @ResponseBody
     public ResponseEntity<TenantDTO> getOrder(@PathVariable("id") Long id) throws Exception {
         return ResponseEntity.status(HttpStatus.OK).body(tenantService.find(id));
