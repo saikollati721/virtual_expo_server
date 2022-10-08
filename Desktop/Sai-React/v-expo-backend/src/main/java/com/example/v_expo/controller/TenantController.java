@@ -40,7 +40,6 @@ public class TenantController {
     private final AuthenticationManager authenticationManager;
     private final TokenProvider jwtTokenUtil;
 
-
     @RequestMapping(method = RequestMethod.GET, path = "")
     public Page<TenantDTO> index(TenantSpecificationBuilder builder, @PageableDefault(value = 25, page = 0) Pageable pageable) {
         log.debug("GET /tenants");
