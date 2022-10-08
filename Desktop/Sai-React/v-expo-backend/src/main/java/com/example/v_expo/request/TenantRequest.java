@@ -7,6 +7,8 @@ import java.util.List;
 
 @Data
 public class TenantRequest {
+    private String userName;
+    private String password;
     private String organizationName;
     private String companyEMail;
     private String personalEMail;

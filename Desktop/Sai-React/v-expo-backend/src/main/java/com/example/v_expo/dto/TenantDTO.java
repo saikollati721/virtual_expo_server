@@ -9,6 +9,7 @@ import java.util.List;
 
 @Data
 public class TenantDTO {
+    private String userName;
     private String organizationName;
     private String companyEMail;
     private String personalEMail;
