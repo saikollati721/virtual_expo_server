@@ -9,43 +9,28 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "tenant")
+@Table(name = "product")
 @Data
 @ToString
-public class Tenant {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username")
-    private String userName;
-
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "organization_name")
-    private String organizationName;
-
-    @Column(name = "comapany_email")
-    private String companyEMail;
-
-    @Column(name = "personal_email")
-    private String personalEMail;
-
-    @Column(name = "place")
-    private String place;
-
-    @Column(name = "contact_number")
-    private String contactNumber;
-
-    @Column(name = "logo_url")
-    private String logoUrl;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "category")
-    private Category category;
+    @Column(name = "offer_price")
+    private Long offer_price;
+
+    @Column(name = "original_price")
+    private Long original_price;
+
+    @Column(name = "tenant_id")
+    private Long tenantId;
 
     @Column(name = "created_date")
     @CreationTimestamp
