@@ -12,5 +12,5 @@ import java.util.Optional;
 @Repository
 @Transactional
 public interface SubscriptionRepository extends PagingAndSortingRepository<Subscription, Long>, JpaSpecificationExecutor<Subscription>, JpaRepository<Subscription, Long> {
-    Optional<Subscription> findByTenantId(Long tenantId);
+//    Optional<Subscription> findByTenantId(Long tenantId);
 }

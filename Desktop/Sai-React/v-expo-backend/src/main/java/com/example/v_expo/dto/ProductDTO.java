@@ -1,6 +1,7 @@
 package com.example.v_expo.dto;
 
 
+import com.example.v_expo.model.Tenant;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -13,4 +14,5 @@ public class ProductDTO {
 	private Long original_price;
 	private Timestamp createdDate;
 	private Timestamp updatedDate;
+	private TenantDTO tenant;
 }

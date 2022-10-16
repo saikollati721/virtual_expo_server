@@ -1,6 +1,7 @@
 package com.example.v_expo.dto;
 
 import com.example.v_expo.model.Category;
+import com.example.v_expo.model.Product;
 import com.example.v_expo.model.Subscription;
 import lombok.Data;
 
@@ -18,7 +19,8 @@ public class TenantDTO {
     private String logoUrl;
     private String description;
     private Category category;
-    private Subscription subscription;
     private Timestamp createdDate;
     private Timestamp updatedDate;
+    private SubscriptionDTO subscription;
+//    private List<ProductDTO> products;
 }

@@ -1,12 +1,15 @@
 package com.example.v_expo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "tenant")
@@ -55,10 +58,18 @@ public class Tenant {
     @UpdateTimestamp
     private Timestamp updatedDate;
 
-//    @OneToOne(mappedBy = "id", fetch = FetchType.LAZY)
-////    @JoinColumn(name = "subscription_id", insertable = false, updatable = false)
-//    @EqualsAndHashCode.Exclude
-//    @ToString.Exclude
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "subscription_id", referencedColumnName = "id")
 //    private Subscription subscription;
 
+    @OneToOne(mappedBy = "tenant")
+    private Subscription subscription;
+
+//    @OneToMany(mappedBy = "tenant", fetch = FetchType.LAZY)
+//    @JsonIgnoreProperties("tenant")
+//    @EqualsAndHashCode.Exclude
+//    @ToString.Exclude
+//    private List<Product> products;
+    @OneToMany(mappedBy="tenant")
+    private List<Product> products;
 }

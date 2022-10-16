@@ -4,7 +4,9 @@ import com.example.v_expo.dto.ProductDTO;
 import com.example.v_expo.dto.SubscriptionDTO;
 import com.example.v_expo.model.Product;
 import com.example.v_expo.request.ProductRequest;
+import com.example.v_expo.request.TenantRequest;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
@@ -16,4 +18,6 @@ public interface ProductMapper {
     ProductDTO mapDTO(Product product);
 
     List<ProductDTO> mapDTOs(List<Product> productList);
+
+    Product merge(@MappingTarget Product product, ProductRequest productRequest);
 }

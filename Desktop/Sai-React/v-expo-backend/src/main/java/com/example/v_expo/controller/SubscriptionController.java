@@ -32,10 +32,10 @@ public class SubscriptionController {
         return ResponseEntity.status(HttpStatus.OK).body(service.find(id));
     }
 
-    @GetMapping("/subscription/tenant/{id}")
-    @ResponseBody
-    public ResponseEntity<SubscriptionDTO> findByTenantId(@PathVariable("id") Long tenantId) throws Exception {
-        return ResponseEntity.status(HttpStatus.OK).body(service.findByTenantId(tenantId));
-    }
+//    @GetMapping("/subscription/tenant/{id}")
+//    @ResponseBody
+//    public ResponseEntity<SubscriptionDTO> findByTenantId(@PathVariable("id") Long tenantId) throws Exception {
+//        return ResponseEntity.status(HttpStatus.OK).body(service.findByTenantId(tenantId));
+//    }
 }
 

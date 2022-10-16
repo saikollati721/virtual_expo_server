@@ -10,4 +10,5 @@ public class ProductRequest {
     private String description;
     private Long offer_price;
 	private Long original_price;
+    private Long tenantId;
 }

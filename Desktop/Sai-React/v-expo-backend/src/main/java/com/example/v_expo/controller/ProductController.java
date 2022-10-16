@@ -2,8 +2,10 @@ package com.example.v_expo.controller;
 
 import com.example.v_expo.dto.ProductDTO;
 import com.example.v_expo.dto.SubscriptionDTO;
+import com.example.v_expo.dto.TenantDTO;
 import com.example.v_expo.request.ProductRequest;
 import com.example.v_expo.request.SubscriptionRequest;
+import com.example.v_expo.request.TenantRequest;
 import com.example.v_expo.service.ProductService;
 import com.example.v_expo.service.SubscriptionService;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +35,12 @@ public class ProductController {
     @ResponseBody
     public ResponseEntity<ProductDTO> find(@PathVariable("id") Long id) throws Exception {
         return ResponseEntity.status(HttpStatus.OK).body(service.find(id));
+    }
+
+    @PutMapping("/{id}")
+    @ResponseBody
+    public ResponseEntity<ProductDTO> update(@PathVariable("id") Long id, @RequestBody ProductRequest productRequest) throws Exception {
+        return ResponseEntity.status(HttpStatus.OK).body(service.update(id,productRequest));
     }
 
     @GetMapping("/tenant/{id}")

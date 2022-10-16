@@ -1,8 +1,12 @@
 package com.example.v_expo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -30,6 +34,7 @@ public class Product {
     private Long original_price;
 
     @Column(name = "tenant_id")
+//    @Transient
     private Long tenantId;
 
     @Column(name = "created_date")
@@ -40,10 +45,22 @@ public class Product {
     @UpdateTimestamp
     private Timestamp updatedDate;
 
-//    @OneToOne(mappedBy = "id", fetch = FetchType.LAZY)
-////    @JoinColumn(name = "subscription_id", insertable = false, updatable = false)
+//    @ManyToOne
+//    @Fetch(value = FetchMode.SELECT)
+//    @JoinColumn(name = "tenant_id", referencedColumnName = "id", insertable = false, updatable = false)
 //    @EqualsAndHashCode.Exclude
 //    @ToString.Exclude
-//    private Subscription subscription;
+//    @JsonIgnoreProperties("product")
+//    private Tenant tenant;
+
+//    @ManyToOne
+//    @JoinColumn(name="tenant_id", nullable=false)
+//    private Tenant tenant;
+    @ManyToOne
+    @Fetch(value = FetchMode.SELECT)
+    @JoinColumn(name = "tenant_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Tenant tenant;
 
 }

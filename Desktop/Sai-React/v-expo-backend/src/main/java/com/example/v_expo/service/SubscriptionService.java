@@ -8,6 +8,7 @@ import com.example.v_expo.model.PlanMode;
 import com.example.v_expo.model.Subscription;
 import com.example.v_expo.model.Tenant;
 import com.example.v_expo.repository.SubscriptionRepository;
+import com.example.v_expo.repository.TenantRepository;
 import com.example.v_expo.request.SubscriptionRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,16 @@ import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__({@Autowired, @Lazy}))
 public class SubscriptionService {
 	private final SubscriptionRepository repository;
 	private final SubscriptionMapper mapper;
+	private final TenantRepository tenantRepository;
 
-	public SubscriptionDTO create(SubscriptionRequest subscriptionRequest) {
+	public SubscriptionDTO create(SubscriptionRequest subscriptionRequest) throws Exception {
 		Subscription subscription = mapper.map(subscriptionRequest);
 		LocalDate date = LocalDate.now();
 		if(subscription.getPlanMode().equals(PlanMode.MONTHLY)){
@@ -53,9 +56,9 @@ public class SubscriptionService {
 		return subscriptionDTO;
 	}
 
-	public SubscriptionDTO findByTenantId(Long tenantId) throws Exception {
-		Subscription subscription = this.repository.findByTenantId(tenantId).orElseThrow(() -> new Exception("Subscription not found with TenantId" + tenantId));
-		SubscriptionDTO subscriptionDTO = mapper.mapDTO(subscription);
-		return subscriptionDTO;
-	}
+//	public SubscriptionDTO findByTenantId(Long tenantId) throws Exception {
+//		Subscription subscription = this.repository.findByTenantId(tenantId).orElseThrow(() -> new Exception("Subscription not found with TenantId" + tenantId));
+//		SubscriptionDTO subscriptionDTO = mapper.mapDTO(subscription);
+//		return subscriptionDTO;
+//	}
 }

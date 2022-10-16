@@ -1,9 +1,12 @@
 package com.example.v_expo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -44,8 +47,17 @@ public class Subscription {
     @UpdateTimestamp
     private Timestamp updatedDate;
 
-//    @OneToOne(mappedBy = "id", fetch = FetchType.LAZY)
+    @OneToOne
+    @Fetch(value = FetchMode.SELECT)
+    @JoinColumn(name = "tenant_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Tenant tenant;
+
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "tenant_id", referencedColumnName = "id")
 //    @EqualsAndHashCode.Exclude
 //    @ToString.Exclude
+//    @JsonIgnoreProperties("subscription")
 //    private Tenant tenant;
 }
